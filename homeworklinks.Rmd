@@ -2,7 +2,9 @@
 title: "homeworklinks"
 author: "Maggie Trout"
 date: "2025-01-22"
-output: html_document
+output: 
+  html_document: 
+    theme: cerulean
 ---
 
 ```{r setup, include=FALSE}
