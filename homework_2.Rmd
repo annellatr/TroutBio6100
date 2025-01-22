@@ -13,4 +13,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Maggie Trout's Homework #2
 
-This is a page made for homework 2
+This is a page made for homework 2! *yay!*
