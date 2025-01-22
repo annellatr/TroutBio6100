@@ -15,4 +15,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is the homepage for Maggie's homeworks
 
-Week 2 homework [Hw2 Link](Homework_2.html)
+Week 2 homework [Hw2 Link](homework_2.html)
