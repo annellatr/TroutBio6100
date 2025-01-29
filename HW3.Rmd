@@ -1,0 +1,85 @@
+---
+title: "Homework_3"
+author: "Maggie Trout"
+date: "2025-01-29"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Homework #3
+
+## Problem 1
+
+```
+Find: \s{2,}
+
+Replace: ,
+
+
+The goal of this expression is to find sequences of 2 or more spaces (2 or more in order to exclude the single spaces in first string and more text)
+```
+
+## Problem 2
+
+```
+Find: (\w*),\s(\w*),\s(.*)
+
+Replace: \2 \1 (\3)
+
+The goal of this is to first grab the first word of each line with the (\w*) then identify the second word, which follows the first word after a comma and a space, thus the ,\s(\w*) then in order to have the university names seperately grabbed so they can be put in parentheses, there is the phrase \s(.*). Finally when replacing, the last name needed to be placed first, then the first name, then the university in parentheses.
+```
+
+## Problem 3
+
+```
+Find: ([mp3])\s(\d+)
+
+Replace: \1\n\2
+
+First I grabbed the end of every file using [mp3], since they are all mp3s here, then to identify that the next line should start with the series of digits I grabbed that using (\d+). Then to replace I put the grabbed mp3, then \n to insert a line break, then /2 to start the new line with the digits
+```
+
+## Problem 4
+
+```
+Find: (\d{4})(.*)(.mp3)
+
+Replace: \2\1_\3
+
+This is first identifying the four digits at the beginning, then the stuff in between, aka the song titles, then catching the .mp3 at the end. The replace function then places the four digits after the song titles, inserts an underscore, then the .mp3.
+```
+
+## Problem 5
+
+```
+Find: (\w)\w*,(\w+),\d+\.\d(,\d+)
+Replace: \1_\2\3
+
+This first grabs the first character, then identifies the rest of that word and the comma, then captures the next word, then identifies the first numeric variable, then grabs the last comma and second variable. Then the replace is only the first character, adding an underscore, then the second word followed by the comma and second variable
+```
+## Problem 6
+
+```
+Find: (\w)\w+,(\w{4})\w+,\d+.\d(,\d+)
+
+Replace: \1_\2\3
+
+This is basically the same as problem 5, but with the addition to capture the first four characters of the second word, instead of the whole second word.
+```
+
+## Problem 7
+
+```
+Find: (\w{3})\w+,(\w{3})\w+,(\d+.\d),(\d+)
+
+Replace: \1\2, \4, \3
+
+Similar setup as the previous two problems, but this time capturing the first three letters of both words of the names, then capturing both digits. The replace also switches the two digits.
+```
+
+## Problem 8
