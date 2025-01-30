@@ -293,7 +293,7 @@ The goal of this is to first grab the first word of each line with the (\w*) the
 </div>
 <div id="problem-3" class="section level2">
 <h2>Problem 3</h2>
-<pre><code>Find: ([mp3])\s(\d+)
+<pre><code>Find: (mp3)\s(\d+)
 
 Replace: \1\n\2
 
@@ -332,6 +332,28 @@ Similar setup as the previous two problems, but this time capturing the first th
 </div>
 <div id="problem-8" class="section level2">
 <h2>Problem 8</h2>
+<pre><code>First, to get rid of the special characters in the bombus_spp and host_plant columns:
+
+Find:[^a-zA-Z0-9/,\.\s]
+
+Replace:
+
+The goal here is to identify any special character, aside from the decimal points and dashes used legitimately in other entries.  
+
+Next, to remove the NAs from the pathogen binary sample where there is a pathogen load listed:
+
+Find: NA(.*\w+\d\s\d[^0])
+
+Replace: 1\1
+
+Here the goal is to first find the NA, but then to determine if the pathogen load is not 0 and replace those with a 1
+
+Then, since all of the other NAs have been found, to change the others to 0 we can just:
+
+Find: NA
+
+Replace: 0
+</code></pre>
 </div>
 </div>
 
