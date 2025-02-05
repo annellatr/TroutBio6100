@@ -18,3 +18,5 @@ This is the homepage for Maggie's homeworks
 Week 2 homework [Hw2 Link](homework_2.html)
 
 Week 3 homework [Hw3 Link](HW3.html)
+
+Week 4 homework [Hw4 Link](HW4.html)

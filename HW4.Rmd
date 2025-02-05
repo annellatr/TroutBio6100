@@ -1,0 +1,122 @@
+---
+title: "HW4"
+author: "Maggie Trout"
+date: "2025-02-05"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+
+First:
+```
+x <- 1.1
+a <- 2.2
+b <- 3.3
+```
+For a:
+```
+z <- x^(a^b)
+print(z)
+```
+
+For b:
+```
+z <- ((x^a)^b)
+print(z)
+```
+
+For c:
+
+```
+z <-3*(x^3)+2*(x^2)+1
+print(z)
+```
+
+# Problem 2
+
+For a:
+```
+vector_a <- c(1:8, 7:1)
+print(vector_a)
+```
+
+For b:
+```
+vector_b1 <- 1:5
+vector_b2 <- rep(x=vector_b1,times=vector_b1)
+print(vector_b2)
+
+OR:
+
+vector_b2 <- rep(x=1:5,times=1:5)
+print(vector_b2)
+```
+For c:
+```
+vector_c3 <- rep(x=5:1,times=1:5)
+print(vector_c3)
+```
+# Problem 3
+```
+x <- runif(1)
+y <- runif(1)
+
+r <- ((x^2) + (y^2))^(1/2)
+print(r)
+
+theta <- atan(y/x)
+print(theta)
+```
+
+# Problem 4
+
+a.
+```
+queue <- c(queue,"snake")  
+print(queue)
+```
+
+b.
+```
+queue <- queue[queue!="sheep"]
+print(queue)
+```
+
+c.
+```
+queue <- c("donkey", queue)
+print(queue)
+```
+
+d.
+```
+queue <- queue[queue!="snake"]
+print(queue)
+```
+e.
+```
+queue <- queue[queue!="owl"]
+print(queue) 
+```
+f.
+```
+queue <- c(queue[-c(3)],"aphid",queue[c(3)])
+print(queue)
+```
+g.
+```
+which(queue=="aphid")
+```
+
+# Problem 5
+```
+vec_1 <- 1:100
+vec_2 <- vec_1[(vec_1%%2)!=0&(vec_1%%3)!=0&(vec_1%%7)!=0]
+print(vec_2)
+```

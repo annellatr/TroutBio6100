@@ -11,9 +11,9 @@
 
 <meta name="author" content="Maggie Trout" />
 
-<meta name="date" content="2025-01-22" />
+<meta name="date" content="2025-02-05" />
 
-<title>homeworklinks</title>
+<title>HW4</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -265,19 +265,100 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">homeworklinks</h1>
+<h1 class="title toc-ignore">HW4</h1>
 <h4 class="author">Maggie Trout</h4>
-<h4 class="date">2025-01-22</h4>
+<h4 class="date">2025-02-05</h4>
 
 </div>
 
 
-<div id="maggie-trouts-homeworks" class="section level1">
-<h1>Maggie Trout’s homeworks</h1>
-<p>This is the homepage for Maggie’s homeworks</p>
-<p>Week 2 homework <a href="homework_2.html">Hw2 Link</a></p>
-<p>Week 3 homework <a href="HW3.html">Hw3 Link</a></p>
-<p>Week 4 homework <a href="HW4.html">Hw4 Link</a></p>
+<div id="problem-1" class="section level1">
+<h1>Problem 1</h1>
+<p>First:</p>
+<pre><code>x &lt;- 1.1
+a &lt;- 2.2
+b &lt;- 3.3</code></pre>
+<p>For a:</p>
+<pre><code>z &lt;- x^(a^b)
+print(z)</code></pre>
+<p>For b:</p>
+<pre><code>z &lt;- ((x^a)^b)
+print(z)</code></pre>
+<p>For c:</p>
+<pre><code>z &lt;-3*(x^3)+2*(x^2)+1
+print(z)</code></pre>
+</div>
+<div id="problem-2" class="section level1">
+<h1>Problem 2</h1>
+<p>For a:</p>
+<pre><code>vector_a &lt;- c(1:8, 7:1)
+print(vector_a)</code></pre>
+<p>For b:</p>
+<pre><code>vector_b1 &lt;- 1:5
+vector_b2 &lt;- rep(x=vector_b1,times=vector_b1)
+print(vector_b2)
+
+OR:
+
+vector_b2 &lt;- rep(x=1:5,times=1:5)
+print(vector_b2)</code></pre>
+<p>For c:</p>
+<pre><code>vector_c3 &lt;- rep(x=5:1,times=1:5)
+print(vector_c3)</code></pre>
+</div>
+<div id="problem-3" class="section level1">
+<h1>Problem 3</h1>
+<pre><code>x &lt;- runif(1)
+y &lt;- runif(1)
+
+r &lt;- ((x^2) + (y^2))^(1/2)
+print(r)
+
+theta &lt;- atan(y/x)
+print(theta)</code></pre>
+</div>
+<div id="problem-4" class="section level1">
+<h1>Problem 4</h1>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- c(queue,&quot;snake&quot;)  
+print(queue)</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- queue[queue!=&quot;sheep&quot;]
+print(queue)</code></pre>
+<ol start="3" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- c(&quot;donkey&quot;, queue)
+print(queue)</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- queue[queue!=&quot;snake&quot;]
+print(queue)</code></pre>
+<ol start="5" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- queue[queue!=&quot;owl&quot;]
+print(queue) </code></pre>
+<ol start="6" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>queue &lt;- c(queue[-c(3)],&quot;aphid&quot;,queue[c(3)])
+print(queue)</code></pre>
+<ol start="7" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<pre><code>which(queue==&quot;aphid&quot;)</code></pre>
+</div>
+<div id="problem-5" class="section level1">
+<h1>Problem 5</h1>
+<pre><code>vec_1 &lt;- 1:100
+vec_2 &lt;- vec_1[(vec_1%%2)!=0&amp;(vec_1%%3)!=0&amp;(vec_1%%7)!=0]
+print(vec_2)</code></pre>
 </div>
 
 
