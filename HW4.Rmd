@@ -64,8 +64,8 @@ print(vector_c3)
 ```
 # Problem 3
 ```
-x <- runif(1)
-y <- runif(1)
+vectorr <- runif(2)
+names(vectorr) <- c("x","y")
 
 r <- ((x^2) + (y^2))^(1/2)
 print(r)
@@ -106,9 +106,12 @@ print(queue)
 ```
 f.
 ```
-queue <- c(queue[-c(3)],"aphid",queue[c(3)])
+queue <- c(queue[queue!="ant"],"aphid","ant")
 print(queue)
 ```
+I do recognize that I can only do it this exact way because I know the ant is already last
+
+
 g.
 ```
 which(queue=="aphid")

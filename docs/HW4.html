@@ -308,8 +308,8 @@ print(vector_c3)</code></pre>
 </div>
 <div id="problem-3" class="section level1">
 <h1>Problem 3</h1>
-<pre><code>x &lt;- runif(1)
-y &lt;- runif(1)
+<pre><code>vectorr &lt;- runif(2)
+names(vectorr) &lt;- c(&quot;x&quot;,&quot;y&quot;)
 
 r &lt;- ((x^2) + (y^2))^(1/2)
 print(r)
@@ -347,8 +347,10 @@ print(queue) </code></pre>
 <ol start="6" style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<pre><code>queue &lt;- c(queue[-c(3)],&quot;aphid&quot;,queue[c(3)])
+<pre><code>queue &lt;- c(queue[queue!=&quot;ant&quot;],&quot;aphid&quot;,&quot;ant&quot;)
 print(queue)</code></pre>
+<p>I do recognize that I can only do it this exact way because I know
+the ant is already last</p>
 <ol start="7" style="list-style-type: lower-alpha">
 <li></li>
 </ol>
