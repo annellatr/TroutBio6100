@@ -153,3 +153,5 @@ d_frame <- d_frame[order(d_frame$my_letters), ]
 ```
 calculate the column mean for the first variable.
 ```{r}
+mean(d_frame$my_unis, na.rm = TRUE)
+```
