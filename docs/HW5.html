@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Maggie Trout" />
+
+<meta name="date" content="2025-02-12" />
+
+<title>HW5</title>
+
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="homeworklinks.html">Homework</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">HW5</h1>
+<h4 class="author">Maggie Trout</h4>
+<h4 class="date">2025-02-12</h4>
+
+</div>
+
+
+<p>#1.</p>
+<p>Assign to the variable n_dims a single random integer between 3 and
+10.</p>
+<pre class="r"><code>n_dims &lt;- sample(3:10,1)
+print(n_dims)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<p>Create a vector of consecutive integers from 1 to n_dims2</p>
+<pre class="r"><code>vec_a &lt;- seq(from=1, to=(n_dims^2))
+print(vec_a)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+## [76] 76 77 78 79 80 81</code></pre>
+<p>Use the sample function to randomly reshuffle these values.</p>
+<pre class="r"><code>vec_a2 &lt;- sample(x=vec_a)
+print(vec_a2)</code></pre>
+<pre><code>##  [1]  1 43 68 19 10 62 78 21 74 14 42 28 35 16 41 48 17 11  9 59 51 70 31 69  5
+## [26] 20 38 50 52 81 66 47 32 67 13  2 73 64  4 58 63 15 37 71 61 29 40 25 18 80
+## [51] 12  6  8 55 57 33 56 26 79 54  7 72 76 65  3 22 24 49 23 27 45 30 60 36 39
+## [76] 53 44 75 77 34 46</code></pre>
+<p>create a square matrix with these elements.</p>
+<pre class="r"><code>matrix_a &lt;- matrix(data=vec_a2,nrow=n_dims)
+print(matrix_a)</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    1   14    9   50   73   29   57   65   60
+##  [2,]   43   42   59   52   64   40   33    3   36
+##  [3,]   68   28   51   81    4   25   56   22   39
+##  [4,]   19   35   70   66   58   18   26   24   53
+##  [5,]   10   16   31   47   63   80   79   49   44
+##  [6,]   62   41   69   32   15   12   54   23   75
+##  [7,]   78   48    5   67   37    6    7   27   77
+##  [8,]   21   17   20   13   71    8   72   45   34
+##  [9,]   74   11   38    2   61   55   76   30   46</code></pre>
+<p>find a function in r to transpose the matrix (+ print it out again
+and note how it has changed)</p>
+<pre class="r"><code>transposed_matrix_a &lt;- t(matrix_a)
+print(transposed_matrix_a)</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    1   43   68   19   10   62   78   21   74
+##  [2,]   14   42   28   35   16   41   48   17   11
+##  [3,]    9   59   51   70   31   69    5   20   38
+##  [4,]   50   52   81   66   47   32   67   13    2
+##  [5,]   73   64    4   58   63   15   37   71   61
+##  [6,]   29   40   25   18   80   12    6    8   55
+##  [7,]   57   33   56   26   79   54    7   72   76
+##  [8,]   65    3   22   24   49   23   27   45   30
+##  [9,]   60   36   39   53   44   75   77   34   46</code></pre>
+<p>calculate the sum and the mean of the elements in the first row and
+then the last row.</p>
+<pre class="r"><code>sum(transposed_matrix_a[1, ])</code></pre>
+<pre><code>## [1] 376</code></pre>
+<pre class="r"><code>sum(transposed_matrix_a[n_dims, ])</code></pre>
+<pre><code>## [1] 464</code></pre>
+<pre class="r"><code>mean(transposed_matrix_a[1, ])</code></pre>
+<pre><code>## [1] 41.77778</code></pre>
+<pre class="r"><code>mean(transposed_matrix_a[n_dims, ])</code></pre>
+<pre><code>## [1] 51.55556</code></pre>
+<p>read about the eigen() function and use it on your matrix</p>
+<pre class="r"><code>decomp &lt;- eigen(transposed_matrix_a)</code></pre>
+<p>look carefully at the elements of $values and $vectors in the output.
+What kind of numbers are these?</p>
+<pre><code>Both appear to be a number, either positive or negative plus or minus an imaginary number. However sometimes the imaginary number is 0i </code></pre>
+<p>dig in with the typeof() function to figure out their type.</p>
+<pre class="r"><code>typeof(decomp$values)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<pre class="r"><code>typeof(decomp$vectors)</code></pre>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+<p>if have set your code up properly, you should be able to re-run it
+and create a matrix of different size because n_dims will change.</p>
+<p>To demonstrate:</p>
+<pre class="r"><code>n_dims &lt;- sample(3:10,1)
+print(n_dims)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>vec_a &lt;- seq(from=1, to=(n_dims^2))
+print(vec_a)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+## [26] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+## [51] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+## [76] 76 77 78 79 80 81</code></pre>
+<pre class="r"><code>vec_a2 &lt;- sample(x=vec_a)
+print(vec_a2)</code></pre>
+<pre><code>##  [1]  8 55 40 76 65 51 36 19 67 63  4 59 72 56 25 61 15 42 20 18 37 52 35 45 38
+## [26] 39 28 12 16 66  1 13  2 70 78 80 50  5 69 24  9 23 46  3 41 73 21 79 43 47
+## [51] 27 57 68 33 31  6 44 53 10 17 64 75 32 48  7 49 26 14 34 71 74 58 22 11 62
+## [76] 77 29 81 54 30 60</code></pre>
+<pre class="r"><code>matrix_a &lt;- matrix(data=vec_a2,nrow=n_dims)
+print(matrix_a)</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    8   63   20   12   50   73   31   48   22
+##  [2,]   55    4   18   16    5   21    6    7   11
+##  [3,]   40   59   37   66   69   79   44   49   62
+##  [4,]   76   72   52    1   24   43   53   26   77
+##  [5,]   65   56   35   13    9   47   10   14   29
+##  [6,]   51   25   45    2   23   27   17   34   81
+##  [7,]   36   61   38   70   46   57   64   71   54
+##  [8,]   19   15   39   78    3   68   75   74   30
+##  [9,]   67   42   28   80   41   33   32   58   60</code></pre>
+<pre class="r"><code>transposed_matrix_a &lt;- t(matrix_a)
+print(transposed_matrix_a)</code></pre>
+<pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+##  [1,]    8   55   40   76   65   51   36   19   67
+##  [2,]   63    4   59   72   56   25   61   15   42
+##  [3,]   20   18   37   52   35   45   38   39   28
+##  [4,]   12   16   66    1   13    2   70   78   80
+##  [5,]   50    5   69   24    9   23   46    3   41
+##  [6,]   73   21   79   43   47   27   57   68   33
+##  [7,]   31    6   44   53   10   17   64   75   32
+##  [8,]   48    7   49   26   14   34   71   74   58
+##  [9,]   22   11   62   77   29   81   54   30   60</code></pre>
+<pre class="r"><code>sum(transposed_matrix_a[1, ])</code></pre>
+<pre><code>## [1] 417</code></pre>
+<pre class="r"><code>sum(transposed_matrix_a[n_dims, ])</code></pre>
+<pre><code>## [1] 426</code></pre>
+<p>#2.</p>
+<p>Create a list with the following named elements:</p>
+<p>my_matrix, which is a 4 x 4 matrix filled with random uniform values
+my_logical which is a 100-element vector of TRUE or FALSE values. Do
+this efficiently by setting up a vector of random values and then
+applying an inequality to it. my_letters, which is a 26-element vector
+of all the lower-case letters in random order.</p>
+<pre class="r"><code>my_list &lt;- list(my_matrix &lt;- matrix(runif(16),nrow=4), 
+                 my_logical &lt;- runif(100)&lt;0.5, 
+                 my_letters &lt;- sample(x=letters, size=26))</code></pre>
+<p>Then, complete the following steps:</p>
+<p>create a new list, which has the element[2,2] from the matrix, the
+second element of the logical vector, and the second element of the
+letters vector.</p>
+<pre class="r"><code>new_list &lt;- list(my_matrix[[2,2]], my_logical[2], my_letters[2])</code></pre>
+<p>use the typeof() function to confirm the underlying data types of
+each component in this list</p>
+<pre class="r"><code>typeof(new_list[[1]])</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(new_list[[2]])</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>typeof(new_list[[3]])</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>combine the underlying elements from the new list into a single
+atomic vector with the c() function.</p>
+<pre class="r"><code>new_vec &lt;- c(new_list[[1]],new_list[[2]],new_list[[3]])
+print(new_vec)</code></pre>
+<pre><code>## [1] &quot;0.483157920651138&quot; &quot;TRUE&quot;              &quot;e&quot;</code></pre>
+<p>what is the data type of this vector?</p>
+<pre class="r"><code>typeof(new_vec)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>#3. Create a data frame with the two variables (= columns) and 26
+cases (= rows) below:</p>
+<p>call the first variable my_unis and fill it with 26 random uniform
+values from 0 to 10</p>
+<p>call the second variable my_letters and fill it with 26 capital
+letters in random order.</p>
+<pre class="r"><code>d_frame &lt;- data.frame(my_unis=runif(n=26,min=0, max=10),
+                      my_letters=sample(x=LETTERS, size=26))</code></pre>
+<p>for the first variable, use a single line of code in R to select 4
+random rows and replace the numerical values in those rows with NA.</p>
+<pre class="r"><code>d_frame[sample(x=1:26,4),1] &lt;- NA</code></pre>
+<p>for the first variable, write a single line of R code to identify
+which rows have the missing values.</p>
+<pre class="r"><code>which(!complete.cases(d_frame))</code></pre>
+<pre><code>## [1] 13 17 21 22</code></pre>
+<p>re-order the entire data frame to arrange the second variable in
+alphabetical order</p>
+<pre class="r"><code>d_frame &lt;- d_frame[order(d_frame$my_letters), ]</code></pre>
+<p>calculate the column mean for the first variable.</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

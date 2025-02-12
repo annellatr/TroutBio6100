@@ -1,0 +1,24 @@
+---
+title: "homeworklinks"
+author: "Maggie Trout"
+date: "2025-01-22"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Maggie Trout's homeworks
+
+This is the homepage for Maggie's homeworks
+
+Week 2 homework [Hw2 Link](homework_2.html)
+
+Week 3 homework [Hw3 Link](HW3.html)
+
+Week 4 homework [Hw4 Link](HW4.html)
+
+Week 5 homework [Hw5 Link](HW5.html)
