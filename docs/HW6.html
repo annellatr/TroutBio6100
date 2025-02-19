@@ -11,9 +11,9 @@
 
 <meta name="author" content="Maggie Trout" />
 
-<meta name="date" content="2025-02-05" />
+<meta name="date" content="2025-02-19" />
 
-<title>HW4</title>
+<title>HW6</title>
 
 <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -265,120 +265,122 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">HW4</h1>
+<h1 class="title toc-ignore">HW6</h1>
 <h4 class="author">Maggie Trout</h4>
-<h4 class="date">2025-02-05</h4>
+<h4 class="date">2025-02-19</h4>
 
 </div>
 
 
-<div id="problem-1" class="section level1">
-<h1>Problem 1</h1>
-<p>First:</p>
-<pre class="r"><code>x &lt;- 1.1
-a &lt;- 2.2
-b &lt;- 3.3</code></pre>
-<p>For a:</p>
-<pre class="r"><code>z &lt;- x^(a^b)
-print(z)</code></pre>
-<pre><code>## [1] 3.61714</code></pre>
-<p>For b:</p>
-<pre class="r"><code>z &lt;- ((x^a)^b)
-print(z)</code></pre>
-<pre><code>## [1] 1.997611</code></pre>
-<p>For c:</p>
-<pre class="r"><code>z &lt;-3*(x^3)+2*(x^2)+1
-print(z)</code></pre>
-<pre><code>## [1] 7.413</code></pre>
-</div>
-<div id="problem-2" class="section level1">
-<h1>Problem 2</h1>
-<p>For a:</p>
-<pre class="r"><code>vector_a &lt;- c(1:8, 7:1)
-print(vector_a)</code></pre>
-<pre><code>##  [1] 1 2 3 4 5 6 7 8 7 6 5 4 3 2 1</code></pre>
-<p>For b:</p>
-<pre class="r"><code>vector_b1 &lt;- 1:5
-vector_b2 &lt;- rep(x=vector_b1,times=vector_b1)
-print(vector_b2)</code></pre>
-<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
-<p>OR:</p>
-<pre class="r"><code>vector_b2 &lt;- rep(x=1:5,times=1:5)
-print(vector_b2)</code></pre>
-<pre><code>##  [1] 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5</code></pre>
-<p>For c:</p>
-<pre class="r"><code>vector_c3 &lt;- rep(x=5:1,times=1:5)
-print(vector_c3)</code></pre>
-<pre><code>##  [1] 5 4 4 3 3 3 2 2 2 2 1 1 1 1 1</code></pre>
-</div>
-<div id="problem-3" class="section level1">
-<h1>Problem 3</h1>
-<pre class="r"><code>vectorr &lt;- runif(2)
-names(vectorr) &lt;- c(&quot;x&quot;,&quot;y&quot;)
-print(vectorr)</code></pre>
-<pre><code>##         x         y 
-## 0.9417106 0.3603828</code></pre>
-<pre class="r"><code>r &lt;- ((vectorr[[&quot;x&quot;]]^2) + (vectorr[[&quot;y&quot;]]^2))^(1/2)
-print(r)</code></pre>
-<pre><code>## [1] 1.008313</code></pre>
-<pre class="r"><code>theta &lt;- atan(vectorr[[&quot;y&quot;]]/vectorr[[&quot;x&quot;]])
-print(theta)</code></pre>
-<pre><code>## [1] 0.3654951</code></pre>
-</div>
-<div id="problem-4" class="section level1">
-<h1>Problem 4</h1>
-<ol style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- c(&quot;sheep&quot;, &quot;fox&quot;, &quot;owl&quot;, &quot;ant&quot;)
-queue &lt;- c(queue,&quot;snake&quot;)  
-print(queue)</code></pre>
-<pre><code>## [1] &quot;sheep&quot; &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;   &quot;snake&quot;</code></pre>
-<ol start="2" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- queue[queue!=&quot;sheep&quot;]
-print(queue)</code></pre>
-<pre><code>## [1] &quot;fox&quot;   &quot;owl&quot;   &quot;ant&quot;   &quot;snake&quot;</code></pre>
-<ol start="3" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- c(&quot;donkey&quot;, queue)
-print(queue)</code></pre>
-<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;owl&quot;    &quot;ant&quot;    &quot;snake&quot;</code></pre>
-<ol start="4" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- queue[queue!=&quot;snake&quot;]
-print(queue)</code></pre>
-<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;owl&quot;    &quot;ant&quot;</code></pre>
-<ol start="5" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- queue[queue!=&quot;owl&quot;]
-print(queue) </code></pre>
-<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;ant&quot;</code></pre>
-<ol start="6" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>queue &lt;- c(queue[queue!=&quot;ant&quot;],&quot;aphid&quot;,&quot;ant&quot;)
-print(queue)</code></pre>
-<pre><code>## [1] &quot;donkey&quot; &quot;fox&quot;    &quot;aphid&quot;  &quot;ant&quot;</code></pre>
-<p>I do recognize that I can only do it this exact way because I know
-the ant is already last</p>
-<ol start="7" style="list-style-type: lower-alpha">
-<li></li>
-</ol>
-<pre class="r"><code>which(queue==&quot;aphid&quot;)</code></pre>
-<pre><code>## [1] 3</code></pre>
-</div>
-<div id="problem-5" class="section level1">
-<h1>Problem 5</h1>
-<pre class="r"><code>vec_1 &lt;- 1:100
-vec_2 &lt;- vec_1[(vec_1%%2)!=0&amp;(vec_1%%3)!=0&amp;(vec_1%%7)!=0]
-print(vec_2)</code></pre>
-<pre><code>##  [1]  1  5 11 13 17 19 23 25 29 31 37 41 43 47 53 55 59 61 65 67 71 73 79 83 85
-## [26] 89 95 97</code></pre>
+<div id="homework-6" class="section level1">
+<h1>Homework 6</h1>
+<p>My dataset is (loosely) based on an experiment I ran where I used
+centrifugation to get cells to uptake exogenous mitochondria. Thus, I
+have two groups, one that did not receive any extra mitochondria, and
+one that did. The metric I am using here is the total number of
+mitochondria per cell that were counted when the cells were imaged.</p>
+<p>In my real dataset from this experiment, I have six replicates of
+each condition. The mean number of mitochondria in the the untreated
+cells was about 130 with a standard deviation of about 17, whereas the
+treated cells had about 230 mitochondria with a larger standard
+deviation of 54.</p>
+<p>Using these numbers and the rnorm function, I made fake data sets for
+each of these conditions, then put the data into a data frame.</p>
+<pre class="r"><code># make data
+no_mito &lt;- rnorm(6, mean=130, sd=17)
+plus_mito &lt;- rnorm(6, mean=230, sd=54)
+
+# put data into a dataframe
+Number_of_mitochondria &lt;- c(no_mito,plus_mito)
+Treatment_condition &lt;- c(rep(&quot;no mito&quot;, length(no_mito)),rep(&quot;plus mito&quot;,length(plus_mito)))
+mito_frame &lt;- data.frame(Number_of_mitochondria, Treatment_condition)
+print(mito_frame)</code></pre>
+<pre><code>##    Number_of_mitochondria Treatment_condition
+## 1                137.6602             no mito
+## 2                120.9349             no mito
+## 3                103.9149             no mito
+## 4                126.9514             no mito
+## 5                106.2629             no mito
+## 6                113.0486             no mito
+## 7                330.6833           plus mito
+## 8                164.7005           plus mito
+## 9                117.0746           plus mito
+## 10               219.8968           plus mito
+## 11               234.9742           plus mito
+## 12               304.4414           plus mito</code></pre>
+<p>Next, I checked the mean and standard deviation of the data:</p>
+<pre class="r"><code># find mean and standard deviation of no_mito
+mean(mito_frame[1:length(no_mito),1])</code></pre>
+<pre><code>## [1] 118.1288</code></pre>
+<pre class="r"><code>sd(mito_frame[1:length(no_mito),1])</code></pre>
+<pre><code>## [1] 12.92926</code></pre>
+<pre class="r"><code># find mean and standard deviation of plus_mito
+mean(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])</code></pre>
+<pre><code>## [1] 228.6285</code></pre>
+<pre class="r"><code>sd(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])</code></pre>
+<pre><code>## [1] 81.00661</code></pre>
+<p>Since there are only two groups her I performed a T-test, as well as
+making a simple box plot to visualize the data.</p>
+<pre class="r"><code># Perform a T-test
+stat &lt;- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+print(stat$p.value)</code></pre>
+<pre><code>## [1] 0.01996087</code></pre>
+<pre class="r"><code>#Make a boxplot
+boxplot(Number_of_mitochondria~Treatment_condition,data=mito_frame, main=&quot;Mito Transfer Data&quot;,
+        xlab=&quot;Treatment&quot;, ylab=&quot;Number of Mitochondria&quot;)</code></pre>
+<p><img src="HW6_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Because I was already seeing a significant p-value at 6, I wrote a
+for loop to see if a lower replicate number with the same effect size
+would still be significant.</p>
+<pre class="r"><code>replicates &lt;- 3:6
+
+for (i in replicates){
+  no_mito &lt;- rnorm(i, mean=130, sd=17)
+  plus_mito &lt;- rnorm(i, mean=230, sd=54)
+  Number_of_mitochondria &lt;- c(no_mito,plus_mito)
+  Treatment_condition &lt;- c(rep(&quot;no mito&quot;, length(no_mito)),rep(&quot;plus mito&quot;,length(plus_mito)))
+  mito_frame &lt;- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat &lt;- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat(&quot;Replicates=&quot;,i,&quot;P-value=&quot;)
+  print(stat$p.value)
+}</code></pre>
+<pre><code>## Replicates= 3 P-value=[1] 0.06226853
+## Replicates= 4 P-value=[1] 0.01317126
+## Replicates= 5 P-value=[1] 0.002522646
+## Replicates= 6 P-value=[1] 0.01086028</code></pre>
+<p>(I’m sure there is a more elegant way to do this, but this was what I
+was able to figure out)</p>
+<p>After running this a few times, it appears that with this effect
+size, it takes at least four replicates for the data to consistently be
+significant, though down to 3 is occasionally significant.</p>
+<p>Next, I wanted to check if a smaller effect size would decrease the
+significance. For this I decided to go back to six as the number of
+replicates, and keep the average number of mitochondria in the untreated
+the same while increasing the effect size.</p>
+<pre class="r"><code>mean_dif &lt;- seq(from=10, to=100, by=10)
+for (i in mean_dif){
+  no_mito &lt;- rnorm(6, mean=130, sd=17)
+  plus_mito &lt;- rnorm(6, mean=(130+i), sd=54)
+  Number_of_mitochondria &lt;- c(no_mito,plus_mito)
+  Treatment_condition &lt;- c(rep(&quot;no mito&quot;, length(no_mito)),rep(&quot;plus mito&quot;,length(plus_mito)))
+  mito_frame &lt;- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat &lt;- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat(&quot;Mean Difference=&quot;,i,&quot;P-value=&quot;)
+  print(stat$p.value)
+}</code></pre>
+<pre><code>## Mean Difference= 10 P-value=[1] 0.983247
+## Mean Difference= 20 P-value=[1] 0.961367
+## Mean Difference= 30 P-value=[1] 0.9027696
+## Mean Difference= 40 P-value=[1] 0.0416225
+## Mean Difference= 50 P-value=[1] 0.03539114
+## Mean Difference= 60 P-value=[1] 0.01235739
+## Mean Difference= 70 P-value=[1] 0.006163375
+## Mean Difference= 80 P-value=[1] 0.005188107
+## Mean Difference= 90 P-value=[1] 0.008846968
+## Mean Difference= 100 P-value=[1] 0.0001799768</code></pre>
+<p>Running this for loop a few times suggested that the effect size must
+be an increase of at least 60 mitochondria per cell to be consistently
+significant.</p>
 </div>
 
 

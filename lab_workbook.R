@@ -133,6 +133,72 @@ d_frame[order(d_frame$my_letters), ]
 
 d_frame <- d_frame[order(d_frame$my_letters), ]
 
-colMeans(d_frame$my_unis)
+mean(d_frame$my_unis, na.rm = TRUE)
 
+
+
+## Lab notes ##
+
+
+# step 1: generate a fake dataset using your chosen dataset as a model
+# step 2: generate relevant summary statistics (exploratory histogram, mean values, etc)
+# step 3: conduct a statistical test- regression, ANOVA, etc
+# step 4: Plot your data
+# step 5: Use for loops to re-run your analysis, but with changed parameters or sample sizes
+# step 6: store results from each loop and include a write-up
+
+
+# make data
+no_mito <- rnorm(6, mean=130, sd=17)
+plus_mito <- rnorm(6, mean=230, sd=54)
+
+# put data into a dataframe
+Number_of_mitochondria <- c(no_mito,plus_mito)
+Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+print(mito_frame)
+
+
+# find mean and standard deviation of no_mito
+mean(mito_frame[1:length(no_mito),1])
+sd(mito_frame[1:length(no_mito),1])
+# find mean and standard deviation of plus_mito
+mean(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])
+sd(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])
+
+# Perform a T-test
+stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+print(stat$p.value)
+
+#Make a boxplot
+boxplot(Number_of_mitochondria~Treatment_condition,data=mito_frame, main="Mito Transfer Data",
+        xlab="Treatment", ylab="Number of Mitochondria")
+
+
+
+replicates <- 3:6
+
+for (i in replicates){
+  no_mito <- rnorm(i, mean=130, sd=17)
+  plus_mito <- rnorm(i, mean=230, sd=54)
+  Number_of_mitochondria <- c(no_mito,plus_mito)
+  Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+  mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat("Replicates=",i,"P-value=")
+  print(stat$p.value)
+}
+
+
+mean_dif <- seq(from=10, to=100, by=10)
+for (i in mean_dif){
+  no_mito <- rnorm(6, mean=130, sd=17)
+  plus_mito <- rnorm(6, mean=(130+i), sd=54)
+  Number_of_mitochondria <- c(no_mito,plus_mito)
+  Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+  mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat("Mean Difference=",i,"P-value=")
+  print(stat$p.value)
+}
 

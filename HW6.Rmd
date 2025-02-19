@@ -1,0 +1,88 @@
+---
+title: "HW6"
+author: "Maggie Trout"
+date: "2025-02-19"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Homework 6
+
+My dataset is (loosely) based on an experiment I ran where I used centrifugation to get cells to uptake exogenous mitochondria. Thus, I have two groups, one that did not receive any extra mitochondria, and one that did. The metric I am using here is the total number of mitochondria per cell that were counted when the cells were imaged. 
+
+In my real dataset from this experiment, I have six replicates of each condition. The mean number of mitochondria in the the untreated cells was about 130 with a standard deviation of about 17, whereas the treated cells had about 230 mitochondria with a larger standard deviation of 54. 
+
+Using these numbers and the rnorm function, I made fake data sets for each of these conditions, then put the data into a data frame.
+```{r}
+# make data
+no_mito <- rnorm(6, mean=130, sd=17)
+plus_mito <- rnorm(6, mean=230, sd=54)
+
+# put data into a dataframe
+Number_of_mitochondria <- c(no_mito,plus_mito)
+Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+print(mito_frame)
+```
+
+Next, I checked the mean and standard deviation of the data:
+```{r}
+# find mean and standard deviation of no_mito
+mean(mito_frame[1:length(no_mito),1])
+sd(mito_frame[1:length(no_mito),1])
+# find mean and standard deviation of plus_mito
+mean(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])
+sd(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])
+```
+
+Since there are only two groups her I performed a T-test, as well as making a simple box plot to visualize the data.
+```{r}
+# Perform a T-test
+stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+print(stat$p.value)
+
+#Make a boxplot
+boxplot(Number_of_mitochondria~Treatment_condition,data=mito_frame, main="Mito Transfer Data",
+        xlab="Treatment", ylab="Number of Mitochondria")
+```
+
+Because I was already seeing a significant p-value at 6, I wrote a for loop to see if a lower replicate number with the same effect size would still be significant.
+```{r}
+replicates <- 3:6
+
+for (i in replicates){
+  no_mito <- rnorm(i, mean=130, sd=17)
+  plus_mito <- rnorm(i, mean=230, sd=54)
+  Number_of_mitochondria <- c(no_mito,plus_mito)
+  Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+  mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat("Replicates=",i,"P-value=")
+  print(stat$p.value)
+}
+```
+(I'm sure there is a more elegant way to do this, but this was what I was able to figure out)
+
+After running this a few times, it appears that with this effect size, it takes at least four replicates for the data to consistently be significant, though down to 3 is occasionally significant.
+
+Next, I wanted to check if a smaller effect size would decrease the significance. For this I decided to go back to six as the number of replicates, and keep the average number of mitochondria in the untreated the same while increasing the effect size.
+```{r}
+mean_dif <- seq(from=10, to=100, by=10)
+for (i in mean_dif){
+  no_mito <- rnorm(6, mean=130, sd=17)
+  plus_mito <- rnorm(6, mean=(130+i), sd=54)
+  Number_of_mitochondria <- c(no_mito,plus_mito)
+  Treatment_condition <- c(rep("no mito", length(no_mito)),rep("plus mito",length(plus_mito)))
+  mito_frame <- data.frame(Number_of_mitochondria, Treatment_condition)
+  stat <- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
+  cat("Mean Difference=",i,"P-value=")
+  print(stat$p.value)
+}
+```
+
+Running this for loop a few times suggested that the effect size must be an increase of at least 60 mitochondria per cell to be consistently significant.
