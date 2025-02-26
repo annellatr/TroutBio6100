@@ -8,7 +8,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Data Manipulations using the dplyr package
+# Data Manipulations using the dplyr package
 
 ## Question 1:
 
