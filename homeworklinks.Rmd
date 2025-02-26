@@ -24,3 +24,5 @@ Week 4 homework [Hw4 Link](HW4.html)
 Week 5 homework [Hw5 Link](HW5.html)
 
 Week 6 homework [HW6 Link](HW6.html)
+
+Week 7 homework [HW7 Link](HW7.html)

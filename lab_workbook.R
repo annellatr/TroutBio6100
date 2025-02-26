@@ -202,3 +202,58 @@ for (i in mean_dif){
   print(stat$p.value)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+library(tidyverse)
+
+data(iris)
+str(iris)
+
+iris1 <- filter(iris, Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width>2.5)
+str(iris1)
+
+
+
+
+iris2 <- select(iris1, Species, Sepal.Length, Sepal.Width)
+str(iris2)
+
+
+iris3 <- arrange(iris2, by=desc(Sepal.Length))
+head(iris3)
+
+iris4 <- mutate(iris3, Sepal.Area=Sepal.Length*Sepal.Width)
+str(iris4)
+
+
+iris5 <- summarize(iris4, Av.Sepal.Length= mean(Sepal.Length), Av.Sepal.Width= mean(Sepal.Width), Sample.Size= n())
+iris5
+
+iris4%>%
+  group_by(Species)%>%
+  summarize(Av.Sepal.Length= mean(Sepal.Length), Av.Sepal.Width= mean(Sepal.Width), Sample.Size= n())
+
+
+irisFinal <- iris%>%
+  filter(Species %in% c("virginica", "versicolor") & Sepal.Length > 6 & Sepal.Width>2.5)%>%
+  select(Species, Sepal.Length, Sepal.Width)%>%
+  arrange(by=desc(Sepal.Length))%>%
+  mutate(Sepal.Area=Sepal.Length*Sepal.Width)%>%
+  group_by(Species)%>%
+  summarize(Av.Sepal.Length= mean(Sepal.Length), Av.Sepal.Width= mean(Sepal.Width), Sample.Size= n())
+irisFinal
+
+iris%>%
+  pivot_longer(cols = Sepal.Length:Petal.Width, names_to="Measure", values_to="Value", values_drop_na=T)
+
