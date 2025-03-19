@@ -4,7 +4,7 @@ author: "Maggie Trout"
 date: "2025-02-19"
 output: 
   html_document: 
-    theme: cerulean
+    rmdformats::material
 ---
 
 ```{r setup, include=FALSE}
@@ -85,4 +85,4 @@ for (i in mean_dif){
 }
 ```
 
-Running this for loop a few times suggested that the effect size must be an increase of at least 60 mitochondria per cell to be consistently significant.
+Running this for loop a few times suggested that the effect size must be an increase of at least 70 mitochondria per cell to be consistently significant.

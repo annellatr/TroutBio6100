@@ -345,3 +345,6 @@ p2 <- ggplot(data=my_sim_data, aes(x=myVar, y=..density..)) +
 # add gamma probability density to the graph
 gstat <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="magenta1", n = length(my_sim_data$myVar), args = list(shape=shapeML, rate=rateML))
 p2 + gstat
+
+library(rmdformats)
+

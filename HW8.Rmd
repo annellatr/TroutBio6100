@@ -4,13 +4,15 @@ author: "Maggie Trout"
 date: "2025-03-19"
 output: 
   html_document: 
-    theme: cerulean
+    rmdformats::material
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Homework #8
+
+# Testing probability densities with my data
 
 Open libraries
 ```{r}
