@@ -2,9 +2,7 @@
 title: "Homework_3"
 author: "Maggie Trout"
 date: "2025-01-29"
-output: 
-  html_document: 
-    rmdformats::material
+output: rmdformats::material
 ---
 
 ```{r setup, include=FALSE}
