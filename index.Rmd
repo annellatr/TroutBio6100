@@ -1,8 +1,6 @@
 ---
 title: "Maggie Trout's Website"
-output: 
-  html_document: 
-    theme: cerulean
+output: rmdformats::material
 ---
 
 You have reached Maggie Trout's website for Bio 6100!

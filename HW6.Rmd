@@ -2,9 +2,7 @@
 title: "HW6"
 author: "Maggie Trout"
 date: "2025-02-19"
-output: 
-  html_document: 
-    rmdformats::material
+output: rmdformats::material
 ---
 
 ```{r setup, include=FALSE}
