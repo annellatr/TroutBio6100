@@ -1,0 +1,133 @@
+---
+title: "HW8"
+author: "Maggie Trout"
+date: "2025-03-19"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Homework #8
+
+Open libraries
+```{r}
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+```
+
+This data is taken from calculation of the total number of mitochondrial branches in an image of a cell. It is a relatively small dataset (36 entries).
+
+Load in data:
+```{r}
+z <- read.table("Mito_Branches.csv",header=TRUE,sep=",")
+names(z) <- list("Branches") #naming the observations
+str(z)
+summary(z)
+```
+
+Plot histogram of data
+```{r}
+#plot histogram of the data
+p1 <- ggplot(data=z, aes(x=Branches, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(p1) 
+```
+    
+Add empirical density curve
+```{r}
+# Adding density curve of the data (not fitted)
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1)
+```
+
+
+Get maximum likelihood parameters for normal
+```{r}
+normPars <- fitdistr(z$Branches,"normal") #fitting to normal distribution
+print(normPars)
+str(normPars)
+normPars$estimate["mean"] # note structure of getting a named attribute
+```
+Plot normal probability density
+```{r}
+meanML <- normPars$estimate["mean"] # pulling out the mean and sd from the fit
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$Branches),len=length(z$Branches)) 
+
+ stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$Branches), args = list(mean = meanML, sd = sdML))
+ p1 + stat # adding the normal probability density to the plot
+```
+
+Plot exponential probability density 
+```{r}
+expoPars <- fitdistr(z$Branches,"exponential")
+rateML <- expoPars$estimate["rate"]
+
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$Branches), args = list(rate=rateML))
+ p1 + stat + stat2
+```
+
+Plot uniform probability density
+```{r}
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$Branches), args = list(min=min(z$Branches), max=max(z$Branches))) # uniform only needs the range of the data
+ p1 + stat + stat2 + stat3
+```
+ 
+Plot gamma probability density
+```{r}
+gammaPars <- fitdistr(z$Branches,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="brown", n = length(z$Branches), args = list(shape=shapeML, rate=rateML))
+ p1 + stat + stat2 + stat3 + stat4
+```
+
+Plot beta probability density
+```{r}
+pSpecial <- ggplot(data=z, aes(x=Branches/(max(Branches + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+betaPars <- fitdistr(x=z$Branches/max(z$Branches + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$Branches), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial # beta needs a new graph
+```
+
+Looking at the graphs, the gamma distribution appears to fit the best (though not perfect- again this is a relatively small dataset)
+
+# Simulating a new dataset based on best distribution:
+
+Simulating data and making a histogram, with the gamma probability density 
+```{r}
+# simulate new data
+set.seed(37) # set seed so simulated data remains the same when run
+my_sim_data <- rgamma(n=36,shape=shapeML,rate=rateML)
+my_sim_data <- data.frame(1:36,my_sim_data)
+names(my_sim_data) <- list("ID","Branches")
+
+# make a histogram of the new data
+p2 <- ggplot(data=my_sim_data, aes(x=Branches, y=..density..)) +
+  geom_histogram(color="grey60",fill="palegreen2",size=0.2) 
+
+# add gamma probability density to the graph
+gstat <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="magenta1", n = length(my_sim_data$Branches), args = list(shape=shapeML, rate=rateML))
+ p2 + gstat 
+```
+
+Original data and gamma probability density:
+```{r}
+p1 <- ggplot(data=z, aes(x=Branches, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+ p1 + stat4
+```
+
+The simulated histogram is relatively similar to the real data, especially in that both have the majority of reads clumped between about 50 and 250, with a few reads appearing between 300-500. Obviously they are not identical, especially as this is a smaller dataset, but the overall shape of the histograms is pretty close. This is a good sign that the fit gamma distribution does represent the data relatively well. 

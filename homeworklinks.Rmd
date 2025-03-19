@@ -1,5 +1,5 @@
 ---
-title: "homeworklinks"
+title: "Homework links"
 author: "Maggie Trout"
 date: "2025-01-22"
 output: 
@@ -26,3 +26,5 @@ Week 5 homework [Hw5 Link](HW5.html)
 Week 6 homework [HW6 Link](HW6.html)
 
 Week 7 homework [HW7 Link](HW7.html)
+
+Week 8 homework [HW8 Link](HW8.html)

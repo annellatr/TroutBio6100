@@ -296,35 +296,35 @@ Treatment_condition &lt;- c(rep(&quot;no mito&quot;, length(no_mito)),rep(&quot;
 mito_frame &lt;- data.frame(Number_of_mitochondria, Treatment_condition)
 print(mito_frame)</code></pre>
 <pre><code>##    Number_of_mitochondria Treatment_condition
-## 1                107.6067             no mito
-## 2                147.5586             no mito
-## 3                135.4954             no mito
-## 4                145.4164             no mito
-## 5                116.2988             no mito
-## 6                116.6813             no mito
-## 7                205.8701           plus mito
-## 8                255.4243           plus mito
-## 9                187.2546           plus mito
-## 10               265.1415           plus mito
-## 11               232.9811           plus mito
-## 12               179.7020           plus mito</code></pre>
+## 1               142.06336             no mito
+## 2                98.97678             no mito
+## 3               115.41342             no mito
+## 4               116.60872             no mito
+## 5               131.34584             no mito
+## 6               106.92132             no mito
+## 7               240.67234           plus mito
+## 8               285.81732           plus mito
+## 9               231.20052           plus mito
+## 10              251.84683           plus mito
+## 11              234.34732           plus mito
+## 12              256.54218           plus mito</code></pre>
 <p>Next, I checked the mean and standard deviation of the data:</p>
 <pre class="r"><code># find mean and standard deviation of no_mito
 mean(mito_frame[1:length(no_mito),1])</code></pre>
-<pre><code>## [1] 128.1762</code></pre>
+<pre><code>## [1] 118.5549</code></pre>
 <pre class="r"><code>sd(mito_frame[1:length(no_mito),1])</code></pre>
-<pre><code>## [1] 16.86881</code></pre>
+<pre><code>## [1] 15.80225</code></pre>
 <pre class="r"><code># find mean and standard deviation of plus_mito
 mean(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])</code></pre>
-<pre><code>## [1] 221.0623</code></pre>
+<pre><code>## [1] 250.0711</code></pre>
 <pre class="r"><code>sd(mito_frame[(length(no_mito)+1):(length(no_mito)+length(plus_mito)),1])</code></pre>
-<pre><code>## [1] 35.63766</code></pre>
+<pre><code>## [1] 20.07233</code></pre>
 <p>Since there are only two groups her I performed a T-test, as well as
 making a simple box plot to visualize the data.</p>
 <pre class="r"><code># Perform a T-test
 stat &lt;- t.test(Number_of_mitochondria ~ Treatment_condition, data = mito_frame)
 print(stat$p.value)</code></pre>
-<pre><code>## [1] 0.000638608</code></pre>
+<pre><code>## [1] 3.08595e-07</code></pre>
 <pre class="r"><code>#Make a boxplot
 boxplot(Number_of_mitochondria~Treatment_condition,data=mito_frame, main=&quot;Mito Transfer Data&quot;,
         xlab=&quot;Treatment&quot;, ylab=&quot;Number of Mitochondria&quot;)</code></pre>
@@ -344,10 +344,10 @@ for (i in replicates){
   cat(&quot;Replicates=&quot;,i,&quot;P-value=&quot;)
   print(stat$p.value)
 }</code></pre>
-<pre><code>## Replicates= 3 P-value=[1] 0.0411344
-## Replicates= 4 P-value=[1] 0.000440835
-## Replicates= 5 P-value=[1] 0.03969299
-## Replicates= 6 P-value=[1] 0.1929211</code></pre>
+<pre><code>## Replicates= 3 P-value=[1] 0.01500763
+## Replicates= 4 P-value=[1] 0.003147349
+## Replicates= 5 P-value=[1] 0.001843468
+## Replicates= 6 P-value=[1] 4.881536e-05</code></pre>
 <p>(I’m sure there is a more elegant way to do this, but this was what I
 was able to figure out)</p>
 <p>After running this a few times, it appears that with this effect
@@ -368,16 +368,16 @@ for (i in mean_dif){
   cat(&quot;Mean Difference=&quot;,i,&quot;P-value=&quot;)
   print(stat$p.value)
 }</code></pre>
-<pre><code>## Mean Difference= 10 P-value=[1] 0.2542739
-## Mean Difference= 20 P-value=[1] 0.8275941
-## Mean Difference= 30 P-value=[1] 0.5654612
-## Mean Difference= 40 P-value=[1] 0.3991209
-## Mean Difference= 50 P-value=[1] 0.1336585
-## Mean Difference= 60 P-value=[1] 0.06023407
-## Mean Difference= 70 P-value=[1] 0.01579855
-## Mean Difference= 80 P-value=[1] 0.004767097
-## Mean Difference= 90 P-value=[1] 0.06533548
-## Mean Difference= 100 P-value=[1] 0.0001084408</code></pre>
+<pre><code>## Mean Difference= 10 P-value=[1] 0.6493323
+## Mean Difference= 20 P-value=[1] 0.4985571
+## Mean Difference= 30 P-value=[1] 0.01406202
+## Mean Difference= 40 P-value=[1] 0.02682476
+## Mean Difference= 50 P-value=[1] 0.01937277
+## Mean Difference= 60 P-value=[1] 0.1388092
+## Mean Difference= 70 P-value=[1] 0.1789428
+## Mean Difference= 80 P-value=[1] 0.04460742
+## Mean Difference= 90 P-value=[1] 0.02061842
+## Mean Difference= 100 P-value=[1] 0.002325755</code></pre>
 <p>Running this for loop a few times suggested that the effect size must
 be an increase of at least 60 mitochondria per cell to be consistently
 significant.</p>
