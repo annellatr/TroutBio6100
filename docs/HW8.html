@@ -303,15 +303,13 @@ dataset (36 entries).</p>
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this
 ## warning was generated.</code></pre>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
 <p>Add empirical density curve</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># Adding density curve of the data (not fitted)</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span>  p1 <span class="sc">+</span>  <span class="fu">geom_density</span>(<span class="at">linetype=</span><span class="st">&quot;dotted&quot;</span>,<span class="at">size=</span><span class="fl">0.75</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">print</span>(p1)</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-4-1.png" width="576" /></p>
 <p>Get maximum likelihood parameters for normal</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>normPars <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(z<span class="sc">$</span>Branches,<span class="st">&quot;normal&quot;</span>) <span class="co">#fitting to normal distribution</span></span>
@@ -343,8 +341,7 @@ dataset (36 entries).</p>
 <span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a></span>
 <span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a> stat <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dnorm, <span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">mean =</span> meanML, <span class="at">sd =</span> sdML))</span>
 <span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a> p1 <span class="sc">+</span> stat <span class="co"># adding the normal probability density to the plot</span></span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-6-1.png" width="576" /></p>
 <p>Plot exponential probability density</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>expoPars <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(z<span class="sc">$</span>Branches,<span class="st">&quot;exponential&quot;</span>)</span>
@@ -352,14 +349,12 @@ dataset (36 entries).</p>
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>stat2 <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dexp, <span class="at">colour=</span><span class="st">&quot;blue&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">rate=</span>rateML))</span>
 <span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a> p1 <span class="sc">+</span> stat <span class="sc">+</span> stat2</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
 <p>Plot uniform probability density</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>stat3 <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dunif, <span class="at">colour=</span><span class="st">&quot;darkgreen&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">min=</span><span class="fu">min</span>(z<span class="sc">$</span>Branches), <span class="at">max=</span><span class="fu">max</span>(z<span class="sc">$</span>Branches))) <span class="co"># uniform only needs the range of the data</span></span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a> p1 <span class="sc">+</span> stat <span class="sc">+</span> stat2 <span class="sc">+</span> stat3</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-8-1.png" width="576" /></p>
 <p>Plot gamma probability density</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>gammaPars <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(z<span class="sc">$</span>Branches,<span class="st">&quot;gamma&quot;</span>)</span>
@@ -368,8 +363,7 @@ dataset (36 entries).</p>
 <span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a></span>
 <span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>stat4 <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dgamma, <span class="at">colour=</span><span class="st">&quot;brown&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape=</span>shapeML, <span class="at">rate=</span>rateML))</span>
 <span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a> p1 <span class="sc">+</span> stat <span class="sc">+</span> stat2 <span class="sc">+</span> stat3 <span class="sc">+</span> stat4</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-9-1.png" width="576" /></p>
 <p>Plot beta probability density</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>pSpecial <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>z, <span class="fu">aes</span>(<span class="at">x=</span>Branches<span class="sc">/</span>(<span class="fu">max</span>(Branches <span class="sc">+</span> <span class="fl">0.1</span>)), <span class="at">y=</span>..density..)) <span class="sc">+</span></span>
@@ -384,8 +378,7 @@ dataset (36 entries).</p>
 <span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a></span>
 <span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>statSpecial <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dbeta, <span class="at">colour=</span><span class="st">&quot;orchid&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape1=</span>shape1ML,<span class="at">shape2=</span>shape2ML))</span>
 <span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>pSpecial <span class="sc">+</span> statSpecial <span class="co"># beta needs a new graph</span></span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values or values outside the
 ## scale range (`geom_bar()`).</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-10-1.png" width="576" /></p>
@@ -410,15 +403,13 @@ density</p>
 <span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a><span class="co"># add gamma probability density to the graph</span></span>
 <span id="cb34-12"><a href="#cb34-12" tabindex="-1"></a>gstat <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dgamma, <span class="at">colour=</span><span class="st">&quot;magenta1&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(my_sim_data<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape=</span>shapeML, <span class="at">rate=</span>rateML))</span>
 <span id="cb34-13"><a href="#cb34-13" tabindex="-1"></a> p2 <span class="sc">+</span> gstat </span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-11-1.png" width="576" /></p>
 <p>Original data and gamma probability density:</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>z, <span class="fu">aes</span>(<span class="at">x=</span>Branches, <span class="at">y=</span>..density..)) <span class="sc">+</span></span>
 <span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;grey60&quot;</span>,<span class="at">fill=</span><span class="st">&quot;cornsilk&quot;</span>,<span class="at">size=</span><span class="fl">0.2</span>) </span>
 <span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a> p1 <span class="sc">+</span> stat4</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-12-1.png" width="576" /></p>
 <p>The simulated histogram is relatively similar to the real data,
 especially in that both have the majority of reads clumped between about
