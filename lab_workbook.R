@@ -348,3 +348,87 @@ p2 + gstat
 
 library(rmdformats)
 
+
+# create at least four visualizations
+
+
+
+# install and load packages
+install.packages("tidytuesdayR")
+install.packages("paletteer")
+library(tidytuesdayR)
+library(tidyverse)
+library(ggbeeswarm)
+library(ggmosaic)
+library(waffle)
+library(treemap)
+library(paletteer)
+
+
+
+# get data
+tuesdata <- tidytuesdayR::tt_load('2022-10-11')
+
+# load yarn dataset
+yarn <- tuesdata$yarn
+
+# select interesting variables
+yarn <- select(yarn,c(yarn_company_name,name,rating_average,rating_count,yarn_weight_name))
+
+# Select only yarns from the 10 most popular brands
+yarn_data <- data.frame(
+  table(yarn$yarn_company_name))
+
+yarn_data <- yarn_data[order(yarn_data$Freq, decreasing=TRUE),]
+
+brand_popular <- yarn_data$Var1[1:10]
+
+yarn_pop <- filter(yarn, yarn_company_name==brand_popular)
+
+# beeswarm plot: rating average for brands
+bees <- ggplot(data=yarn_pop) +
+  aes(x=rating_average,y=yarn_company_name,color=yarn_company_name,size=rating_count) +
+  ggbeeswarm::geom_beeswarm(method = "center") +
+  scale_color_paletteer_d("ggthemes::Classic_Purple_Gray_12")
+bees
+
+# waffle plot: frequency of brands
+yarn_data_short <- yarn_data[1:10,]
+yarn_data_short <- rename(yarn_data_short, "company_name"="Var1")
+
+waffle <- ggplot(data=yarn_data_short) +
+  aes(fill = company_name, values = Freq) +
+  waffle::geom_waffle(n_rows = 75, size = 0.5, colour = "white") +
+  coord_equal() +
+  scale_fill_paletteer_d("ggthemes::Classic_Purple_Gray_12") +
+  theme_void()
+
+waffle
+
+# mosaic plot: weight by brand
+mosaic <- ggplot(data = yarn_pop) +
+  geom_mosaic(aes(x = product(yarn_weight_name,yarn_company_name),
+                  fill=yarn_weight_name),
+              divider=mosaic("v")) +
+  labs(title='Yarn weights by brand') +
+  scale_fill_paletteer_d("ggthemes::Classic_Purple_Gray_12") +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+mosaic
+
+# Tree map
+# make even shorter list of popular yarn
+brand_popularer <- yarn_data$Var1[1:4]
+
+
+yarn_pop_short <- filter(yarn, yarn_company_name==brand_popularer)
+
+tree_data <- as.data.frame(table(Brand=yarn_pop_short$yarn_company_name,Weight=yarn_pop_short$yarn_weight_name))
+
+p <- treemap(dtf=tree_data,
+             index=c("Brand","Weight"),
+             vSize="Freq",
+             type="index",
+             )
+

@@ -294,15 +294,14 @@ dataset (36 entries).</p>
 <pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">print</span>(p1) </span></code></pre></div>
-<pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2
-## 3.4.0.
+<pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
 <p>Add empirical density curve</p>
@@ -379,8 +378,8 @@ dataset (36 entries).</p>
 <span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>statSpecial <span class="ot">&lt;-</span> <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">x =</span> xval, <span class="at">y =</span> ..y..), <span class="at">fun =</span> dbeta, <span class="at">colour=</span><span class="st">&quot;orchid&quot;</span>, <span class="at">n =</span> <span class="fu">length</span>(z<span class="sc">$</span>Branches), <span class="at">args =</span> <span class="fu">list</span>(<span class="at">shape1=</span>shape1ML,<span class="at">shape2=</span>shape2ML))</span>
 <span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>pSpecial <span class="sc">+</span> statSpecial <span class="co"># beta needs a new graph</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values or values outside the
-## scale range (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_bar()`).</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-10-1.png" width="576" /></p>
 <p>Looking at the graphs, the gamma distribution appears to fit the best
 (though not perfect- again this is a relatively small dataset)</p>
