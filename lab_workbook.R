@@ -363,6 +363,8 @@ library(ggmosaic)
 library(waffle)
 library(treemap)
 library(paletteer)
+library(ggridges)
+library(ggplot2)
 
 
 
@@ -392,18 +394,32 @@ bees <- ggplot(data=yarn_pop) +
   scale_color_paletteer_d("ggthemes::Classic_Purple_Gray_12")
 bees
 
-# waffle plot: frequency of brands
-yarn_data_short <- yarn_data[1:10,]
-yarn_data_short <- rename(yarn_data_short, "company_name"="Var1")
+# Ridgeline plot: Average Rating of Discontinued vs. non.discontinued yarns
 
-waffle <- ggplot(data=yarn_data_short) +
-  aes(fill = company_name, values = Freq) +
-  waffle::geom_waffle(n_rows = 75, size = 0.5, colour = "white") +
-  coord_equal() +
-  scale_fill_paletteer_d("ggthemes::Classic_Purple_Gray_12") +
-  theme_void()
+#Change group names
+yarn_pop$discontinued[yarn_pop$discontinued=="FALSE"] <- "Not Discontinued"
+yarn_pop$discontinued[yarn_pop$discontinued=="TRUE"] <- "Discontinued"
+# set up color palette
+my_cols <- c("indianred1","seagreen3")
+ggplot(yarn_pop, aes(x = rating_average, y = discontinued, fill = discontinued)) +
+  geom_density_ridges() +
+  labs(title="Average Rating of Discontinued vs. Non-Discontinued yarns") +
+  scale_fill_manual(values=my_cols)+
+  theme_ridges() +
+  theme(legend.position = "none")
 
-waffle
+
+# yarn_data_short <- yarn_data[1:10,]
+# yarn_data_short <- rename(yarn_data_short, "company_name"="Var1")
+#
+# waffle <- ggplot(data=yarn_data_short) +
+#   aes(fill = company_name, values = Freq) +
+#   waffle::geom_waffle(n_rows = 75, size = 0.5, colour = "white") +
+#   coord_equal() +
+#   scale_fill_paletteer_d("ggthemes::Classic_Purple_Gray_12") +
+#   theme_void()
+#
+# waffle
 
 # mosaic plot: weight by brand
 mosaic <- ggplot(data = yarn_pop) +

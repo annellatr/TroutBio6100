@@ -21,6 +21,7 @@ library(ggmosaic)
 library(waffle)
 library(treemap)
 library(paletteer)
+library(ggridges)
 
 # get data
 tuesdata <- tidytuesdayR::tt_load('2022-10-11')
@@ -31,9 +32,6 @@ yarn <- tuesdata$yarn
 
 Then, organize and subset data to make it more manageable.
 ```{r}
-# select interesting variables
-yarn <- select(yarn,c(yarn_company_name,name,rating_average,rating_count,yarn_weight_name))
-
 # Select only yarns from the 10 most popular brands
 yarn_data <- data.frame(
   table(yarn$yarn_company_name))
@@ -72,19 +70,21 @@ waffle <- ggplot(data=yarn_data_short) +
 waffle
 ```
 
-# Mosaic plot:
+# Ridgeline plot:
 ```{r}
-# mosaic plot: weight by brand
-mosaic <- ggplot(data = yarn_pop) +
-  geom_mosaic(aes(x = product(yarn_weight_name,yarn_company_name), 
-                  fill=yarn_weight_name),
-              divider=mosaic("v")) +
-  labs(title='Yarn weights by brand') +
-  scale_fill_paletteer_d("ggthemes::Classic_Purple_Gray_12") +
-  theme(axis.title.x = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank())
-mosaic
+# Ridgeline plot: Average Rating of Discontinued vs. non.discontinued yarns
+
+#Change group names
+yarn_pop$discontinued[yarn_pop$discontinued=="FALSE"] <- "Not Discontinued"
+yarn_pop$discontinued[yarn_pop$discontinued=="TRUE"] <- "Discontinued"
+# set up color palette
+my_cols <- c("indianred1","seagreen3")
+ggplot(yarn_pop, aes(x = rating_average, y = discontinued, fill = discontinued)) +
+  geom_density_ridges() +
+  labs(title="Average Rating of Discontinued vs. Non-Discontinued yarns") +
+  scale_fill_manual(values=my_cols)+
+  theme_ridges() + 
+  theme(legend.position = "none")
 ```
 
 # Tree plot
