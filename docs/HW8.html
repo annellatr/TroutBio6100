@@ -291,19 +291,19 @@ dataset (36 entries).</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co">#plot histogram of the data</span></span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>z, <span class="fu">aes</span>(<span class="at">x=</span>Branches, <span class="at">y=</span>..density..)) <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color=</span><span class="st">&quot;grey60&quot;</span>,<span class="at">fill=</span><span class="st">&quot;cornsilk&quot;</span>,<span class="at">size=</span><span class="fl">0.2</span>) </span></code></pre></div>
-<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2
-## 3.4.0.
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in
+## ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">print</span>(p1) </span></code></pre></div>
 <pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in
 ## ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this
-## warning was generated.</code></pre>
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
 ## `binwidth`.</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
@@ -387,8 +387,8 @@ dataset (36 entries).</p>
 <span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>pSpecial <span class="sc">+</span> statSpecial <span class="co"># beta needs a new graph</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
 ## `binwidth`.</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values or values outside
-## the scale range (`geom_bar()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values or values
+## outside the scale range (`geom_bar()`).</code></pre>
 <p><img src="HW8_files/figure-html/unnamed-chunk-10-1.png" width="576" /></p>
 <p>Looking at the graphs, the gamma distribution appears to fit the best
 (though not perfect- again this is a relatively small dataset)</p>

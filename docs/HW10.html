@@ -263,13 +263,13 @@ plot:</a></li>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># install and load packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">library</span>(tidytuesdayR)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching core tidyverse packages ────── tidyverse 2.0.0 ──
+<pre><code>## ── Attaching core tidyverse packages ────────────────────
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 ## ✔ purrr     1.0.2     
-## ── Conflicts ──────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
@@ -282,15 +282,16 @@ plot:</a></li>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co"># get data</span></span>
 <span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">&#39;2022-10-11&#39;</span>)</span></code></pre></div>
-<pre><code>## ---- Compiling #TidyTuesday Information for 2022-10-11 ----
+<pre><code>## ---- Compiling #TidyTuesday Information for 2022-10-11
+## ----
 ## --- There is 1 file available ---
 ## 
 ## 
-## ── Downloading files ─────────────────────────────────────────
+## ── Downloading files ────────────────────────────────────
 ## 
 ##   1 of 1: &quot;yarn.csv&quot;</code></pre>
-<pre><code>## Warning: One or more parsing issues, call `problems()` on your data
-## frame for details, e.g.:
+<pre><code>## Warning: One or more parsing issues, call `problems()` on your
+## data frame for details, e.g.:
 ##   dat &lt;- vroom(...)
 ##   problems(dat)</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># load yarn dataset</span></span>
@@ -317,13 +318,13 @@ plot:</a></li>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  ggbeeswarm<span class="sc">::</span><span class="fu">geom_beeswarm</span>(<span class="at">method =</span> <span class="st">&quot;center&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">scale_color_paletteer_d</span>(<span class="st">&quot;ggthemes::Classic_Purple_Gray_12&quot;</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>bees</span></code></pre></div>
-<pre><code>## Warning: In `position_beeswarm`, method `center` discretizes the data
-## axis (a.k.a the continuous or non-grouped axis).
+<pre><code>## Warning: In `position_beeswarm`, method `center` discretizes the
+## data axis (a.k.a the continuous or non-grouped axis).
 ## This may result in changes to the position of the points
 ## along that axis, proportional to the value of `cex`.
 ## This warning is displayed once per session.</code></pre>
-<pre><code>## Warning: Removed 38 rows containing missing values or values outside
-## the scale range (`geom_point()`).</code></pre>
+<pre><code>## Warning: Removed 38 rows containing missing values or values
+## outside the scale range (`geom_point()`).</code></pre>
 <p><img src="HW10_files/figure-html/unnamed-chunk-3-1.png" width="576" /></p>
 </div>
 <div id="waffle-plot" class="section level1">
@@ -358,8 +359,8 @@ plot:</a></li>
 <span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>  <span class="fu">theme_ridges</span>() <span class="sc">+</span> </span>
 <span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <pre><code>## Picking joint bandwidth of 0.139</code></pre>
-<pre><code>## Warning: Removed 38 rows containing non-finite outside the scale range
-## (`stat_density_ridges()`).</code></pre>
+<pre><code>## Warning: Removed 38 rows containing non-finite outside the scale
+## range (`stat_density_ridges()`).</code></pre>
 <p><img src="HW10_files/figure-html/unnamed-chunk-5-1.png" width="576" /></p>
 </div>
 <div id="tree-plot" class="section level1">

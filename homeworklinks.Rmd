@@ -27,6 +27,6 @@ This is the homepage for Maggie's homeworks
 
 [Homework 8](HW8.html)
 
-[Homework 9 Zip File](HW_10_MAT.zip)
+[Homework 9 (Zip File)](HW_10_MAT.zip)
 
 [Homework 10](HW10.html)
