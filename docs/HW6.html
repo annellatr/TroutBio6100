@@ -275,35 +275,35 @@ each of these conditions, then put the data into a data frame.</p>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>mito_frame <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Number_of_mitochondria, Treatment_condition)</span>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">print</span>(mito_frame)</span></code></pre></div>
 <pre><code>##    Number_of_mitochondria Treatment_condition
-## 1               118.48219             no mito
-## 2               139.17485             no mito
-## 3               136.87711             no mito
-## 4               116.99715             no mito
-## 5               129.76848             no mito
-## 6                86.07295             no mito
-## 7               243.55425           plus mito
-## 8               290.38474           plus mito
-## 9               299.24824           plus mito
-## 10              239.24216           plus mito
-## 11              252.86971           plus mito
-## 12              210.65544           plus mito</code></pre>
+## 1                101.5865             no mito
+## 2                146.5586             no mito
+## 3                110.9962             no mito
+## 4                131.0810             no mito
+## 5                112.3225             no mito
+## 6                120.9713             no mito
+## 7                104.3664           plus mito
+## 8                217.2279           plus mito
+## 9                213.9424           plus mito
+## 10               349.7303           plus mito
+## 11               256.1358           plus mito
+## 12               307.4515           plus mito</code></pre>
 <p>Next, I checked the mean and standard deviation of the data:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># find mean and standard deviation of no_mito</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">mean</span>(mito_frame[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(no_mito),<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 121.2288</code></pre>
+<pre><code>## [1] 120.586</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">sd</span>(mito_frame[<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(no_mito),<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 19.49995</code></pre>
+<pre><code>## [1] 16.16231</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># find mean and standard deviation of plus_mito</span></span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">mean</span>(mito_frame[(<span class="fu">length</span>(no_mito)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(<span class="fu">length</span>(no_mito)<span class="sc">+</span><span class="fu">length</span>(plus_mito)),<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 255.9924</code></pre>
+<pre><code>## [1] 241.4757</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">sd</span>(mito_frame[(<span class="fu">length</span>(no_mito)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(<span class="fu">length</span>(no_mito)<span class="sc">+</span><span class="fu">length</span>(plus_mito)),<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 33.32978</code></pre>
+<pre><code>## [1] 85.36015</code></pre>
 <p>Since there are only two groups her I performed a T-test, as well as
 making a simple box plot to visualize the data.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># Perform a T-test</span></span>
 <span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>stat <span class="ot">&lt;-</span> <span class="fu">t.test</span>(Number_of_mitochondria <span class="sc">~</span> Treatment_condition, <span class="at">data =</span> mito_frame)</span>
 <span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">print</span>(stat<span class="sc">$</span>p.value)</span></code></pre></div>
-<pre><code>## [1] 2.57311e-05</code></pre>
+<pre><code>## [1] 0.01711526</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co">#Make a boxplot</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">boxplot</span>(Number_of_mitochondria<span class="sc">~</span>Treatment_condition,<span class="at">data=</span>mito_frame, <span class="at">main=</span><span class="st">&quot;Mito Transfer Data&quot;</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Treatment&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Number of Mitochondria&quot;</span>)</span></code></pre></div>
@@ -323,10 +323,10 @@ would still be significant.</p>
 <span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Replicates=&quot;</span>,i,<span class="st">&quot;P-value=&quot;</span>)</span>
 <span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>  <span class="fu">print</span>(stat<span class="sc">$</span>p.value)</span>
 <span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Replicates= 3 P-value=[1] 0.01424447
-## Replicates= 4 P-value=[1] 0.00287257
-## Replicates= 5 P-value=[1] 0.005857561
-## Replicates= 6 P-value=[1] 0.0112209</code></pre>
+<pre><code>## Replicates= 3 P-value=[1] 0.09907871
+## Replicates= 4 P-value=[1] 0.04396656
+## Replicates= 5 P-value=[1] 0.003518244
+## Replicates= 6 P-value=[1] 0.00553439</code></pre>
 <p>(I’m sure there is a more elegant way to do this, but this was what I
 was able to figure out)</p>
 <p>After running this a few times, it appears that with this effect
@@ -347,16 +347,16 @@ the same while increasing the effect size.</p>
 <span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;Mean Difference=&quot;</span>,i,<span class="st">&quot;P-value=&quot;</span>)</span>
 <span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>  <span class="fu">print</span>(stat<span class="sc">$</span>p.value)</span>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Mean Difference= 10 P-value=[1] 0.3366025
-## Mean Difference= 20 P-value=[1] 0.1770185
-## Mean Difference= 30 P-value=[1] 0.2644861
-## Mean Difference= 40 P-value=[1] 0.01017176
-## Mean Difference= 50 P-value=[1] 0.06977063
-## Mean Difference= 60 P-value=[1] 0.00177679
-## Mean Difference= 70 P-value=[1] 0.0001680616
-## Mean Difference= 80 P-value=[1] 0.003966159
-## Mean Difference= 90 P-value=[1] 0.04646122
-## Mean Difference= 100 P-value=[1] 0.002440856</code></pre>
+<pre><code>## Mean Difference= 10 P-value=[1] 0.8201889
+## Mean Difference= 20 P-value=[1] 0.3272942
+## Mean Difference= 30 P-value=[1] 0.01278585
+## Mean Difference= 40 P-value=[1] 0.05829815
+## Mean Difference= 50 P-value=[1] 0.0007931119
+## Mean Difference= 60 P-value=[1] 0.1167165
+## Mean Difference= 70 P-value=[1] 0.3311995
+## Mean Difference= 80 P-value=[1] 0.004871051
+## Mean Difference= 90 P-value=[1] 0.03312288
+## Mean Difference= 100 P-value=[1] 0.002603946</code></pre>
 <p>Running this for loop a few times suggested that the effect size must
 be an increase of at least 70 mitochondria per cell to be consistently
 significant.</p>
